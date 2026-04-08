@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organizador de Tarefas Domésticas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- NAVEGAÇÃO -->
+    <nav class="navbar">
+        <div class="container">
+            <h1 class="logo">🏠 Casa Organizada</h1>
+            <ul class="nav-links">
+                <li><a href="#" onclick="mostrarTela('home')" class="nav-btn">Hoje</a></li>
+                <li><a href="#" onclick="mostrarTela('semana')" class="nav-btn">Semana</a></li>
+                <li><a href="#" onclick="mostrarTela('moradores')" class="nav-btn">Moradores</a></li>
+                <li><a href="#" onclick="mostrarTela('tarefas')" class="nav-btn">Tarefas</a></li>
+                <li><a href="#" onclick="mostrarTela('programacao')" class="nav-btn">Programação</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- TELA INICIAL - HOJE -->
+        <section id="home" class="tela">
+            <h2>📅 Tarefa de Hoje</h2>
+            <div class="card-grande">
+                <div id="info-hoje" class="info-hoje">
+                    <p>Carregando...</p>
+                </div>
+                <div class="botoes-hoje">
+                    <button onclick="marcarConcluida()" class="btn btn-sucesso">✓ Concluída</button>
+                    <button onclick="abrirJustificativa()" class="btn btn-aviso">⚠️ Não Realizada</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- TELA SEMANA -->
+        <section id="semana" class="tela" style="display:none;">
+            <h2>📋 Programação da Semana</h2>
+            <div id="semana-container" class="semana-grid">
+                <!-- Preenchido por JavaScript -->
+            </div>
+        </section>
+
+        <!-- TELA MORADORES -->
+        <section id="moradores" class="tela" style="display:none;">
+            <h2>👥 Gerenciar Moradores</h2>
+            <form id="form-morador" class="form">
+                <input type="text" id="nome-morador" placeholder="Nome do morador" required>
+                <input type="file" id="foto-morador" accept="image/*">
+                <button type="submit" class="btn btn-primario">+ Adicionar Morador</button>
+            </form>
+            <div id="lista-moradores" class="lista">
+                <!-- Preenchido por JavaScript -->
+            </div>
+        </section>
+
+        <!-- TELA TAREFAS -->
+        <section id="tarefas" class="tela" style="display:none;">
+            <h2>✅ Gerenciar Tarefas</h2>
+            <form id="form-tarefa" class="form">
+                <input type="text" id="nome-tarefa" placeholder="Nome da tarefa" required>
+                <button type="submit" class="btn btn-primario">+ Adicionar Tarefa</button>
+            </form>
+            <div id="lista-tarefas" class="lista">
+                <!-- Preenchido por JavaScript -->
+            </div>
+        </section>
+
+        <!-- TELA PROGRAMAÇÃO -->
+        <section id="programacao" class="tela" style="display:none;">
+            <h2>⏰ Configurar Programação</h2>
+            <form id="form-programacao" class="form">
+                <label>Dia da Semana:</label>
+                <select id="dia-semana" required>
+                    <option value="0">Domingo</option>
+                    <option value="1">Segunda</option>
+                    <option value="2">Terça</option>
+                    <option value="3">Quarta</option>
+                    <option value="4">Quinta</option>
+                    <option value="5">Sexta</option>
+                    <option value="6">Sábado</option>
+                </select>
+
+                <label>Morador Responsável:</label>
+                <select id="morador-responsavel" required>
+                    <option value="">Selecione um morador</option>
+                </select>
+
+                <label>Tarefa:</label>
+                <select id="tarefa-programacao" required>
+                    <option value="">Selecione uma tarefa</option>
+                </select>
+
+                <label>Horário:</label>
+                <input type="time" id="horario-programacao" required>
+
+                <button type="submit" class="btn btn-primario">Salvar Programação</button>
+            </form>
+            <div id="lista-programacao" class="lista">
+                <!-- Preenchido por JavaScript -->
+            </div>
+        </section>
+    </div>
+
+    <!-- MODAL JUSTIFICATIVA -->
+    <div id="modal-justificativa" class="modal" style="display:none;">
+        <div class="modal-content">
+            <h3>Por que não foi realizada?</h3>
+            <textarea id="texto-justificativa" placeholder="Digite a justificativa..." rows="4"></textarea>
+            <div class="botoes-modal">
+                <button onclick="salvarJustificativa()" class="btn btn-sucesso">Salvar</button>
+                <button onclick="fecharModal()" class="btn btn-secundario">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL ONBOARDING -->
+    <div id="modal-onboarding" class="modal">
+        <div class="modal-content">
+            <h2>Bem-vindo! 👋</h2>
+            <p>Qual é o seu nome?</p>
+            <input type="text" id="nome-usuario" placeholder="Seu nome">
+            <input type="file" id="foto-usuario" accept="image/*">
+            <button onclick="salvarUsuario()" class="btn btn-sucesso">Continuar</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
